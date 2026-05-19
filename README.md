@@ -7,7 +7,7 @@ This project does four things:
 1. Updates the system.
 2. Installs Hyprland and the Arch/Manjaro packages Caelestia expects.
 3. Installs an AUR helper if needed, then pulls in the Caelestia meta package and upstream dotfiles.
-4. Places a local cheatsheet into `~/Documents`.
+4. Applies project-owned Caelestia overrides and places a local cheatsheet into `~/Documents`.
 
 ## Target
 
@@ -24,6 +24,9 @@ This project does four things:
 - Installs `caelestia-meta` from the AUR.
 - Clones the upstream `caelestia-dots/caelestia` repo into `~/.local/share/caelestia`.
 - Runs the upstream `install.fish` so configs are linked the way Caelestia expects.
+- Copies project-owned overrides into `~/.config/caelestia`.
+- Enables Caelestia's Hyprland user include files so `hypr-user.conf` and `hypr-vars.conf` actually load.
+- Initializes wallpaper selection from `~/Pictures/Wallpapers` when wallpapers are present.
 - Copies a quick reference cheatsheet into `~/Documents/Caelestia-Hyprland-Cheatsheet.md`.
 
 ## What It Does Not Do
@@ -68,7 +71,13 @@ bash install.sh --spotify --discord --zen --vscode codium
 ├── docs/
 │   └── cheatsheet.md
 ├── install.sh
+├── overrides/
+│   └── caelestia/
+│       ├── hypr-user.conf
+│       ├── hypr-vars.conf
+│       └── shell.json
 └── scripts/
+    ├── apply-overrides.sh
     ├── install-aur-helper.sh
     ├── install-caelestia.sh
     ├── install-packages.sh
