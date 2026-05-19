@@ -51,7 +51,16 @@ initialise_wallpaper() {
   fi
 
   log "Initializing Caelestia wallpaper from $wall_dir"
-  run caelestia wallpaper -r "$wall_dir"
+
+  if [[ "${DRY_RUN:-0}" -eq 1 ]]; then
+    printf '[dry-run] %s\n' "caelestia wallpaper -r \"$wall_dir\" || caelestia wallpaper -n -r \"$wall_dir\""
+    return 0
+  fi
+
+  if ! caelestia wallpaper -r "$wall_dir"; then
+    warn "Default wallpaper selection failed, retrying without size filter"
+    caelestia wallpaper -n -r "$wall_dir"
+  fi
 }
 
 install_cursor_fallbacks() {
