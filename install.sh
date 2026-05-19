@@ -91,6 +91,7 @@ bash "$ROOT_DIR/scripts/install-session.sh" "$SKIP_UPGRADE"
 bash "$ROOT_DIR/scripts/install-packages.sh"
 bash "$ROOT_DIR/scripts/install-aur-helper.sh"
 bash "$ROOT_DIR/scripts/install-caelestia.sh" "${CAELESTIA_INSTALL_ARGS[@]}"
+bash "$ROOT_DIR/scripts/apply-overrides.sh"
 
 if [[ "$SKIP_CHEATSHEET" -ne 1 ]]; then
   install_cheatsheet
