@@ -37,6 +37,7 @@ This project does four things:
 ```bash
 git clone <your-repo-url> ~/.local/share/hyprland-caelestia-setup
 cd ~/.local/share/hyprland-caelestia-setup
+chmod +x install.sh scripts/*.sh
 ./install.sh
 ```
 
