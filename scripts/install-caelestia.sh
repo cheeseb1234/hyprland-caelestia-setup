@@ -12,6 +12,7 @@ need_cmd git
 command -v "$helper" >/dev/null 2>&1 || die "AUR helper not found after install step: $helper"
 
 log "Installing Caelestia meta package from AUR"
+log "This AUR step also pulls Caelestia-specific dependencies like app2unit"
 if [[ "${NOCONFIRM:-0}" -eq 1 ]]; then
   run "$helper" -S --needed --noconfirm caelestia-meta
 else
