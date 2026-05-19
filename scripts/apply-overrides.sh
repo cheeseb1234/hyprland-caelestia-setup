@@ -9,6 +9,8 @@ config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/caelestia"
 caelestia_repo="$HOME/.local/share/caelestia"
 hypr_conf="$caelestia_repo/hypr/hyprland.conf"
 wall_dir="$HOME/Pictures/Wallpapers"
+cursor_theme="breeze_cursors"
+cursor_size="24"
 
 ensure_parent() {
   run mkdir -p "$(dirname "$1")"
@@ -52,6 +54,26 @@ initialise_wallpaper() {
   run caelestia wallpaper -r "$wall_dir"
 }
 
+install_cursor_fallbacks() {
+  local icons_default_dir="$HOME/.icons/default"
+  local cursor_index="$icons_default_dir/index.theme"
+
+  run mkdir -p "$icons_default_dir"
+
+  if [[ "${DRY_RUN:-0}" -eq 1 ]]; then
+    printf '[dry-run] write %s\n' "$cursor_index"
+  else
+    cat >"$cursor_index" <<EOF
+[Icon Theme]
+Inherits=${cursor_theme}
+EOF
+  fi
+
+  log "Installed XCursor fallback theme: $cursor_theme"
+  run gsettings set org.gnome.desktop.interface cursor-theme "$cursor_theme"
+  run gsettings set org.gnome.desktop.interface cursor-size "$cursor_size"
+}
+
 restart_shell() {
   log "Restarting Caelestia shell"
   if [[ "${DRY_RUN:-0}" -eq 1 ]]; then
@@ -67,5 +89,6 @@ install_override_file "$ROOT_DIR/overrides/caelestia/shell.json" "$config_dir/sh
 install_override_file "$ROOT_DIR/overrides/caelestia/hypr-user.conf" "$config_dir/hypr-user.conf"
 install_override_file "$ROOT_DIR/overrides/caelestia/hypr-vars.conf" "$config_dir/hypr-vars.conf"
 enable_hypr_user_includes
+install_cursor_fallbacks
 initialise_wallpaper
 restart_shell
