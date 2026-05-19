@@ -37,22 +37,22 @@ This project does four things:
 ```bash
 git clone https://github.com/cheeseb1234/hyprland-caelestia-setup.git ~/.local/share/hyprland-caelestia-setup
 cd ~/.local/share/hyprland-caelestia-setup
-chmod +x install.sh scripts/*.sh
-./install.sh
+git config core.filemode false
+bash install.sh
 ```
 
 ## Options
 
 ```bash
-./install.sh --help
-./install.sh --dry-run
-./install.sh --noconfirm
-./install.sh --aur-helper yay
-./install.sh --aur-helper paru
-./install.sh --greetd
-./install.sh --skip-upgrade
-./install.sh --skip-cheatsheet
-./install.sh --spotify --discord --zen --vscode codium
+bash install.sh --help
+bash install.sh --dry-run
+bash install.sh --noconfirm
+bash install.sh --aur-helper yay
+bash install.sh --aur-helper paru
+bash install.sh --greetd
+bash install.sh --skip-upgrade
+bash install.sh --skip-cheatsheet
+bash install.sh --spotify --discord --zen --vscode codium
 ```
 
 ## Notes For MacBookPro14,1
