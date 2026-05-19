@@ -17,7 +17,6 @@ packages=(
   wl-clipboard
   cliphist
   inotify-tools
-  app2unit
   wireplumber
   pipewire
   pipewire-pulse
