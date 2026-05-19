@@ -35,7 +35,7 @@ This project does four things:
 ## Quick Start
 
 ```bash
-git clone <https://github.com/cheeseb1234/hyprland-caelestia-setup> ~/.local/share/hyprland-caelestia-setup
+git clone https://github.com/cheeseb1234/hyprland-caelestia-setup.git ~/.local/share/hyprland-caelestia-setup
 cd ~/.local/share/hyprland-caelestia-setup
 chmod +x install.sh scripts/*.sh
 ./install.sh
